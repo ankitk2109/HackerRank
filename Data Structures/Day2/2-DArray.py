@@ -1,3 +1,5 @@
+#Problem statement at: https://www.hackerrank.com/challenges/2d-array/problem
+
 #!/bin/python3
 
 import math
