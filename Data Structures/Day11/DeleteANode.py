@@ -42,12 +42,14 @@ def print_singly_linked_list(node, sep, fptr):
 def deleteNode(head, position):
     tail = head
     n = position-1
-    while(n): #Going one position before
-        tail = tail.next
-        n -= 1
-    tail.next = tail.next.next #Pointing to the next node wrt to position of deleting node
-    return(head)
-    
+    if position == 0:
+        head = head.next
+    else:
+        while(n): #Going one position before
+            tail = tail.next
+            n -= 1
+        tail.next = tail.next.next #Pointing to the next node wrt to position of deleting node
+    return(head)  
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
