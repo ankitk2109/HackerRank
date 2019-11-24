@@ -1,3 +1,5 @@
+#Problem Statement at: https://www.hackerrank.com/challenges/30-interfaces/problem
+
 class AdvancedArithmetic(object):
     def divisorSum(n):
         raise NotImplementedError
