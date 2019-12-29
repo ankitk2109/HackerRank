@@ -48,7 +48,7 @@ def has_cycle(head):
     cur = head
     while(cur):
         if(cur.data != None):
-            cur.data = None
+            cur.data = None #Marking each visited node data with "None" so that if we iterate over all nodes and find node data = None then there is a cycle
             cur = cur.next
         else:
             return True
