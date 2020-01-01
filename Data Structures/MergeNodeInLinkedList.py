@@ -47,6 +47,8 @@ def print_singly_linked_list(node, sep, fptr):
 #
 #
 def findMergeNode(head1, head2):
+    '''
+    #Method1
     addr = {}   #Creating a dictionary to save addresses of the visited nodes
     start1 = head1 
     start2 = head2
@@ -56,12 +58,58 @@ def findMergeNode(head1, head2):
     #print(addr)
 
     while(start2):
-        if(start2 in addr.keys()): #Checking if the current node exists in the dictionary.
+        if(start2 in addr.keys()): #Checking if the current node if exists in the dictionary.
             return start2.data
         start2 = start2.next
+    '''
+    #Method2: Finding length of both the lists and adjusting the start point
+    temp1 = head1 
+    temp2 = head2
+    len1 = 0
+    len2 = 0
 
+    while(temp1):   #Finding the length of linked list 1
+        len1 += 1
+        temp1 = temp1.next
 
+    while(temp2):   #Finding the length of linked list 2
+        len2 += 1
+        temp2 = temp2.next
 
+    start1 = head1 
+    start2 = head2
+
+    #Adjusting the start point to minimum length
+    if(len1<len2):
+        diff = len2 - len1
+        while(diff):
+            start2 = start2.next
+            diff -= 1
+        while(len1):
+            if(start1 == start2):
+                return start1.data
+            start1 = start1.next
+            start2 = start2.next
+            len1 -= 1
+
+    elif (len1 == len2):
+        while(start1):
+            if(start1 == start2):
+                return start1.data
+            start1 = start1.next
+            start2 = start2.next
+    
+    else:
+        diff = len1 - len2
+        while(diff):
+            start1 = start1.next
+            diff -= 1
+        while(len2):
+            if(start1 == start2):
+                return start1.data
+            start1 = start1.next
+            start2 = start2.next
+            len2 -= 1
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
