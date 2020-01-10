@@ -48,10 +48,19 @@ class Node:
        // this is a node of the tree , which contains info as data, left , right
 '''
 def height(root):
+    if root == None: #If there are no left or right child then return -1
+        return -1
+    else:
+        left_height = getHeight(root.left) #Finding left height
+        right_height = getHeight(root.right)
+        max_height = 1+ max(left_height,right_height) #Adding 1 because the above recurssion misses the edge from root(we can say current node) to next Level. Hence we need to add that edge.
+        return max_height
+    '''
+    #OR
     if(root==None):
         return -1
     return 1 + max(height(root.left), height(root.right))
-
+    '''
 
 tree = BinarySearchTree()
 t = int(input())
